@@ -7,6 +7,8 @@ typealias QuantityNumber = Double
 
 @JvmInline
 value class Quantity<D : AnyDimension>(val siValue: QuantityNumber) : Comparable<Quantity<D>> {
+    constructor(siValue: Int): this(siValue.toDouble())
+    
     inline operator fun plus(other: Quantity<D>): Quantity<D> =
         Quantity(siValue + other.siValue)
     inline operator fun minus(other: Quantity<D>): Quantity<D> =
